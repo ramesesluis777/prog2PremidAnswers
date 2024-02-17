@@ -18,20 +18,9 @@ char* compressString(char* str) {
         } else {
             compressed[index++] = str[i - 1];
             if (count > 1) {
-                int temp = count;
-                int countDigits = 0;
-                while (temp != 0) {
-                    countDigits++;
-                    temp /= 10;
-                }
-                temp = count;
-                for (int j = 0; j < countDigits; j++) {
-                    compressed[index + countDigits - 1 - j] = temp % 10 + '0';
-                    temp /= 10;
-                }
-                index += countDigits;
-                count = 1;
+                compressed[index++] = count + '0'; 
             }
+            count = 1;
         }
     }
     compressed[index] = '\0';
